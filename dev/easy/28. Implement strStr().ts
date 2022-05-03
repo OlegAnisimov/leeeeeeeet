@@ -21,17 +21,19 @@ function strStr(haystack: string, needle: string): number | undefined {
         haystack: string,
         needle: string,
         indexHaystack: number,
-    ): number | undefined => {
+    ): number => {
         const comparePartHaystack = haystack.slice(indexHaystack, indexHaystack + needle.length);
         if (comparePartHaystack === needle) {
             return indexHaystack
+        } else {
+            return -1
         }
     }
 
     for (let i = 0; i < haystack.length; i++) {
         if (haystack[i] === needle[0] ) {
-            const index: number | undefined = compare(haystack, needle, i);
-            index ? indexesForCheck.push(index) : null;
+            const index: number = compare(haystack, needle, i);
+            index >= 0 ? indexesForCheck.push(index) : null;
         }
     }
     if (indexesForCheck.length === 0) {
@@ -41,23 +43,7 @@ function strStr(haystack: string, needle: string): number | undefined {
     }
 };
 
-console.log(strStr("hello", "ll"));
-console.log(strStr("aaaaa", "bba"));
-// for (let i = 0; i <= needle.length; i++) {
-//     if (i === needle.length) return -1
-//     for (let j = 0; j < haystack.length; j++) {
-//         if (needle[i] === haystack[j]) {
-//             if (needle[needle.length - 1] === haystack[j + needle.length]) {
-//                 return j
-//             }
-//         }
-//     }
-// }
-// return 100
+// console.log(strStr("hello", "ll"));
+// console.log(strStr("aaaaa", "bba"));
+console.log(strStr("a", "a"));
 
-
-// for (let i = 0; i < needle.length; i++) {
-//     // 1. recursion we need here sub haystack.length \ needle.length
-//     // and find maybe regExp in 1/2
-//     // 2.
-// }
